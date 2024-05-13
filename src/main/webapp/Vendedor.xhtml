@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+    <h:outputStylesheet name="css/bootstrap.min.css" />
+    <style type="text/css">
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        h1{
+            text-align: center;
+            color: #06357a;
+        }
+        .form-label {
+            font-weight: bold;
+        }
+        .form-control {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .btn {
+            width: 100px;
+            margin: 10px;
+        }
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+    </style>
+
+    <title>Vendedor</title>
+</h:head>
+<h:body>
+    <h:form styleClass="container">
+        <h:panelGrid columns="1">
+            <h1>Vendedor</h1>
+        </h:panelGrid>
+        <h3> Ingresa la informacion del producto</h3>
+        <h:panelGrid columns="2">
+            <h:outputLabel for="id" value="ID: " styleClass="form-label" />
+            <h:inputText styleClass="form-control" id="id" value="#{productosBean.id}"/>
+            <h:outputLabel for="marca" value="Marca: " styleClass="form-label" />
+            <h:inputText styleClass="form-control" id="marca" value="#{productosBean.marca}" />
+            <h:outputLabel for="modelo" value="Modelo: " styleClass="form-label" />
+            <h:inputText styleClass="form-control" id="modelo" value="#{productosBean.modelo}"/>
+            <h:panelGrid columns="4">
+                <h:commandButton styleClass="btn btn-danger center-block" value="Vender" action="#{productosBean.venderProducto()}" />
+            </h:panelGrid>
+            <h:messages infoStyle="color: blue" globalOnly="true"/>
+        </h:panelGrid>
+    </h:form>
+    <br/>
+    <h:form styleClass="container">
+        <h:dataTable styleClass="table table-striped" var="list" value="#{productosBean.productos}" >
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="ID"/>
+                </f:facet>
+                <h:outputText value="#{list.id}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Marca"/>
+                </f:facet>
+                <h:outputText value="#{list.marca}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Modelo"/>
+                </f:facet>
+                <h:outputText value="#{list.modelo}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Precio"/>
+                </f:facet>
+                <h:outputText value="#{list.precio}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Talla"/>
+                </f:facet>
+                <h:outputText value="#{list.talla}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Color"/>
+                </f:facet>
+                <h:outputText value="#{list.color}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Stock"/>
+                </f:facet>
+                <h:outputText value="#{list.stock}"/>
+            </h:column>
+        </h:dataTable>
+    </h:form>
+</h:body>
+</html>
